@@ -51,6 +51,7 @@ dotenv_1.default.config();
 var app = (0, express_1.default)();
 (0, db_1.default)();
 app.use(express_1.default.json());
+app.get('/test', function (req, res) { return console.log('test'); });
 app.use((0, cookie_parser_1.default)());
 app.use((0, morgan_1.default)("dev"));
 // app.use(trim);

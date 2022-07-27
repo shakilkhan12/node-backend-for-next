@@ -82,16 +82,19 @@ var getPosts = function (_, res) { return __awaiter(void 0, void 0, void 0, func
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, Post_1.default.find().populate("sub")];
+                console.log("getPosts");
+                _a.label = 1;
             case 1:
+                _a.trys.push([1, 3, , 4]);
+                return [4 /*yield*/, Post_1.default.find().populate("sub")];
+            case 2:
                 posts = _a.sent();
                 return [2 /*return*/, res.json(posts)];
-            case 2:
+            case 3:
                 error_2 = _a.sent();
                 console.log(error_2.message);
                 return [2 /*return*/, res.status(500).json({ error: error_2.message })];
-            case 3: return [2 /*return*/];
+            case 4: return [2 /*return*/];
         }
     });
 }); };
