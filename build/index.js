@@ -41,7 +41,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var cookie_parser_1 = __importDefault(require("cookie-parser"));
 var express_1 = __importDefault(require("express"));
-var morgan_1 = __importDefault(require("morgan"));
+// import morgan from "morgan";
 var dotenv_1 = __importDefault(require("dotenv"));
 var auth_1 = __importDefault(require("./routes/auth"));
 var posts_1 = __importDefault(require("./routes/posts"));
@@ -53,7 +53,7 @@ var app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.get('/test', function (req, res) { return console.log('test'); });
 app.use((0, cookie_parser_1.default)());
-app.use((0, morgan_1.default)("dev"));
+// app.use(morgan("dev"));
 // app.use(trim);
 app.get('/', function (_, res) { return res.send('Hello world'); });
 app.use('/api/auth', auth_1.default);
