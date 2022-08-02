@@ -52,7 +52,7 @@ dotenv_1.default.config();
 var app = (0, express_1.default)();
 (0, db_1.default)();
 app.use((0, cors_1.default)({
-    origin: process.env.ORIGIN,
+    origin: process.env.NODE_ENV === 'production' ? process.env.LIVE_ORIGIN : process.env.ORIGIN,
     credentials: true,
     optionsSuccessStatus: 200
 }));
