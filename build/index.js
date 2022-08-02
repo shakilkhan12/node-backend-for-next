@@ -58,11 +58,11 @@ else if (process.env.NODE_ENV === "production") {
 var app = (0, express_1.default)();
 (0, db_1.default)();
 app.use((0, cors_1.default)({
-    origin: process.env.NODE_ENV === 'production' ? process.env.LIVE_ORIGIN : process.env.ORIGIN,
+    origin: 'https://reddditclone.vercel.app/',
     credentials: true,
     optionsSuccessStatus: 200,
-    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-    "preflightContinue": false,
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
 }));
 app.use(express_1.default.json());
 app.get('/test', function (req, res) { return console.log('test'); });
