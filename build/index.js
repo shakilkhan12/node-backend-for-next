@@ -61,7 +61,8 @@ app.use((0, cors_1.default)({
     origin: process.env.NODE_ENV === 'production' ? process.env.LIVE_ORIGIN : process.env.ORIGIN,
     credentials: true,
     optionsSuccessStatus: 200,
-    methods: ["GET", "POST", "PUT", "DELETE"]
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "preflightContinue": false,
 }));
 app.use(express_1.default.json());
 app.get('/test', function (req, res) { return console.log('test'); });
