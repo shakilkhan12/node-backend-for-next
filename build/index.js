@@ -41,6 +41,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var cookie_parser_1 = __importDefault(require("cookie-parser"));
 var express_1 = __importDefault(require("express"));
+var cors_1 = __importDefault(require("cors"));
 // import morgan from "morgan";
 var dotenv_1 = __importDefault(require("dotenv"));
 var auth_1 = __importDefault(require("./routes/auth"));
@@ -50,6 +51,11 @@ var db_1 = __importDefault(require("./config/db"));
 dotenv_1.default.config();
 var app = (0, express_1.default)();
 (0, db_1.default)();
+app.use((0, cors_1.default)({
+    origin: process.env.ORIGIN,
+    credentials: true,
+    optionsSuccessStatus: 200
+}));
 app.use(express_1.default.json());
 app.get('/test', function (req, res) { return console.log('test'); });
 app.use((0, cookie_parser_1.default)());
@@ -66,5 +72,5 @@ app.listen(PORT, function () { return __awaiter(void 0, void 0, void 0, function
         return [2 /*return*/];
     });
 }); });
-// https://youtu.be/_Gu0dP8AsZE?list=PLMhAeHCz8S38HfrRtzfzFD5NTbjgQxcpD&t=1028
+// https://youtu.be/wc-5_h6iMn8?list=PLMhAeHCz8S38HfrRtzfzFD5NTbjgQxcpD&t=2422
 //# sourceMappingURL=index.js.map

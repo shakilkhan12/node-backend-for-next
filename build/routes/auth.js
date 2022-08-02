@@ -47,8 +47,9 @@ var cookie_1 = __importDefault(require("cookie"));
 var User_1 = __importDefault(require("../models/User"));
 var auth_1 = __importDefault(require("../middleware/auth"));
 var userValidations_1 = require("../validations/userValidations");
+var coversion_1 = require("../utils/coversion");
 var register = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, email, username, password, errors, errors_1, emailUser, usernameUser, user, _b, error_1;
+    var _a, email, username, password, errors, errorsObj, errors_1, emailUser, usernameUser, user, _b, error_1;
     var _c;
     return __generator(this, function (_d) {
         switch (_d.label) {
@@ -56,8 +57,10 @@ var register = function (req, res) { return __awaiter(void 0, void 0, void 0, fu
                 _a = req.body, email = _a.email, username = _a.username, password = _a.password;
                 errors = (0, express_validator_1.validationResult)(req);
                 console.log(errors.array());
-                if (!errors.isEmpty())
-                    return [2 /*return*/, res.status(400).json({ errors: errors.array() })];
+                if (!errors.isEmpty()) {
+                    errorsObj = (0, coversion_1.errorsConversion)(errors.array());
+                    return [2 /*return*/, res.status(400).json(errorsObj)];
+                }
                 _d.label = 1;
             case 1:
                 _d.trys.push([1, 6, , 7]);
@@ -97,14 +100,16 @@ var register = function (req, res) { return __awaiter(void 0, void 0, void 0, fu
     });
 }); };
 var login = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, username, password, errors, user, passwordMatch, token, error_2;
+    var _a, username, password, errors, errorsObj, user, passwordMatch, token, error_2;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
                 _a = req.body, username = _a.username, password = _a.password;
                 errors = (0, express_validator_1.validationResult)(req);
-                if (!errors.isEmpty())
-                    return [2 /*return*/, res.status(400).json({ errors: errors.array() })];
+                if (!errors.isEmpty()) {
+                    errorsObj = (0, coversion_1.errorsConversion)(errors.array());
+                    return [2 /*return*/, res.status(400).json(errorsObj)];
+                }
                 _b.label = 1;
             case 1:
                 _b.trys.push([1, 4, , 5]);
@@ -112,7 +117,7 @@ var login = function (req, res) { return __awaiter(void 0, void 0, void 0, funct
             case 2:
                 user = _b.sent();
                 if (!user)
-                    return [2 /*return*/, res.status(404).json({ error: "User not found" })];
+                    return [2 /*return*/, res.status(404).json({ username: "User not found" })];
                 return [4 /*yield*/, bcrypt_1.default.compare(password, user.password)];
             case 3:
                 passwordMatch = _b.sent();
