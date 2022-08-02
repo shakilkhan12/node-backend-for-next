@@ -49,6 +49,12 @@ var posts_1 = __importDefault(require("./routes/posts"));
 var subs_1 = __importDefault(require("./routes/subs"));
 var db_1 = __importDefault(require("./config/db"));
 dotenv_1.default.config();
+if (process.env.NODE_ENV === "development") {
+    console.log(process.env.ORIGIN);
+}
+else if (process.env.NODE_ENV === "production") {
+    console.log(process.env.LIVE_ORIGIN);
+}
 var app = (0, express_1.default)();
 (0, db_1.default)();
 app.use((0, cors_1.default)({
