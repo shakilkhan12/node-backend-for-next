@@ -47,11 +47,11 @@ var Post_1 = __importDefault(require("../models/Post"));
 var Comment_1 = __importDefault(require("../models/Comment"));
 var helpers_1 = require("../utils/helpers");
 var createPost = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, title, body, sub, subId, errors, user, post, error_1;
+    var _a, title, body, sub, errors, user, post, error_1;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
-                _a = req.body, title = _a.title, body = _a.body, sub = _a.sub, subId = _a.subId;
+                _a = req.body, title = _a.title, body = _a.body, sub = _a.sub;
                 errors = (0, express_validator_1.validationResult)(req);
                 user = res.locals.user;
                 console.log(user);
@@ -60,11 +60,7 @@ var createPost = function (req, res) { return __awaiter(void 0, void 0, void 0, 
                 _b.label = 1;
             case 1:
                 _b.trys.push([1, 3, , 4]);
-                post = new Post_1.default({ title: title, body: body, user: user, subName: sub, sub: subId, identifier: (0, helpers_1.makeId)(7), slug: (0, helpers_1.slugify)(title), userDetails: {
-                        username: user.username,
-                        email: user.email,
-                        id: user._id
-                    } });
+                post = new Post_1.default({ title: title, body: body, user: user, sub: sub, identifier: (0, helpers_1.makeId)(7), slug: (0, helpers_1.slugify)(title) });
                 return [4 /*yield*/, post.save()];
             case 2:
                 _b.sent();
@@ -86,7 +82,7 @@ var getPosts = function (_, res) { return __awaiter(void 0, void 0, void 0, func
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);
-                return [4 /*yield*/, Post_1.default.find().populate("sub")];
+                return [4 /*yield*/, Post_1.default.find().populate("user", '-password').populate("sub")];
             case 2:
                 posts = _a.sent();
                 return [2 /*return*/, res.json(posts)];

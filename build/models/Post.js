@@ -19,15 +19,9 @@ var PostSchema = new mongoose_1.Schema({
         required: true,
         type: String
     },
-    subName: {
-        required: true,
-        type: String,
-        index: true
-    },
-    user: { type: mongoose_1.Schema.Types.ObjectId, ref: "user" },
+    user: { type: mongoose_1.Schema.Types.ObjectId, ref: "User" },
     sub: { type: mongoose_1.Schema.Types.ObjectId, ref: "sub" },
-    comments: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "comment" }],
-    userDetails: Map
+    comments: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "Comment" }],
 }, {
     timestamps: true
 });

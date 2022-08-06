@@ -26,9 +26,8 @@ var SubSchema = new mongoose_1.Schema({
         default: null,
         type: String
     },
-    user: { type: mongoose_1.Schema.Types.ObjectId, ref: "user" },
-    posts: { type: mongoose_1.Schema.Types.ObjectId, ref: "post" },
-    userDetails: Map
+    user: { type: mongoose_1.Schema.Types.ObjectId, ref: "User" },
+    posts: { type: mongoose_1.Schema.Types.ObjectId, ref: "Post" },
 });
 var SubModel = (0, mongoose_1.model)("sub", SubSchema);
 exports.default = SubModel;
