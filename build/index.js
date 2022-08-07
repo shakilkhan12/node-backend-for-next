@@ -50,6 +50,7 @@ var subs_1 = __importDefault(require("./routes/subs"));
 var db_1 = __importDefault(require("./config/db"));
 dotenv_1.default.config();
 console.log('process check ', process.env.NODE_ENV);
+console.log('Simple comment to server index.ts file');
 if (process.env.NODE_ENV === "development") {
     console.log(process.env.ORIGIN);
 }
