@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: AkhileshNS/heroku-deploy@v3.12.12 
+      - uses: akhileshns/heroku-deploy@v3.7.8 
         with:
           heroku_api_key: "bcc3839f-bb7f-4520-af90-877a0aec7246"
           heroku_app_name: "node-api-for-next"
