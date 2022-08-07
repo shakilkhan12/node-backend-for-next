@@ -49,7 +49,7 @@ var posts_1 = __importDefault(require("./routes/posts"));
 var subs_1 = __importDefault(require("./routes/subs"));
 var db_1 = __importDefault(require("./config/db"));
 dotenv_1.default.config();
-var fullName = "Rashid Kha;;
+var fullName = "Rashid Khan";
 console.log('process check ', process.env.NODE_ENV);
 console.log("My full name is: ".concat(fullName));
 if (process.env.NODE_ENV === "development") {
