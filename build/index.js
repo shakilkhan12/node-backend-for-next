@@ -47,6 +47,7 @@ var dotenv_1 = __importDefault(require("dotenv"));
 var auth_1 = __importDefault(require("./routes/auth"));
 var posts_1 = __importDefault(require("./routes/posts"));
 var subs_1 = __importDefault(require("./routes/subs"));
+var misc_1 = __importDefault(require("./routes/misc"));
 var db_1 = __importDefault(require("./config/db"));
 dotenv_1.default.config();
 var fullName = "Rashid Khan";
@@ -74,6 +75,7 @@ app.get('/', function (_, res) { return res.send('Hello world'); });
 app.use('/api/auth', auth_1.default);
 app.use('/api/posts', posts_1.default);
 app.use('/api/subs', subs_1.default);
+app.use('/api/misc', misc_1.default);
 var PORT = process.env.PORT || 5000;
 app.listen(PORT, function () { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
@@ -81,4 +83,5 @@ app.listen(PORT, function () { return __awaiter(void 0, void 0, void 0, function
         return [2 /*return*/];
     });
 }); });
+// https://youtu.be/uEVTXIDuqME?list=PLMhAeHCz8S38HfrRtzfzFD5NTbjgQxcpD&t=1045
 //# sourceMappingURL=index.js.map
