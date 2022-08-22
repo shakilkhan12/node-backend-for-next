@@ -1,4 +1,11 @@
 {
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+
   "compilerOptions": {
     // https://www.typescriptlang.org/tsconfig
     "lib": ["es5", "es6"],

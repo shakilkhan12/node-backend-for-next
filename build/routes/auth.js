@@ -132,7 +132,7 @@ var login = function (req, res) { return __awaiter(void 0, void 0, void 0, funct
                     secure: process.env.NODE_ENV === "production",
                     path: "/"
                 }));
-                res.json(user);
+                res.json({ user: user, token: token });
                 return [3 /*break*/, 5];
             case 4:
                 error_2 = _b.sent();
@@ -162,6 +162,10 @@ var router = (0, express_1.Router)();
 router.post('/register', userValidations_1.registerValidations, register);
 router.post('/login', userValidations_1.loginValidations, login);
 router.get('/me', auth_1.default, me);
+router.get('/check', auth_1.default, function (req, res) {
+    var token = req.cookies.token;
+    return res.json({ auth: true, user: res.locals.user });
+});
 router.get('/logout', auth_1.default, logout);
 exports.default = router;
 //# sourceMappingURL=auth.js.map

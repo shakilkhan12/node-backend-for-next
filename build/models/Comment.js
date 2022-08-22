@@ -5,14 +5,14 @@ var commentSchema = new mongoose_1.Schema({
     identifier: {
         required: true,
         type: String,
-        index: true
     },
     body: {
         required: true,
         type: String
     },
     user: { type: mongoose_1.Schema.Types.ObjectId, ref: "user" },
-    posts: { type: mongoose_1.Schema.Types.ObjectId, ref: "post" }
+    posts: { type: mongoose_1.Schema.Types.ObjectId, ref: "post" },
+    votes: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "vote" }]
 }, {
     timestamps: true
 });

@@ -5,7 +5,7 @@ var PostSchema = new mongoose_1.Schema({
     identifier: {
         required: true,
         type: String,
-        index: true
+        // index: true
     },
     title: {
         required: true,
@@ -21,7 +21,8 @@ var PostSchema = new mongoose_1.Schema({
     },
     user: { type: mongoose_1.Schema.Types.ObjectId, ref: "User" },
     sub: { type: mongoose_1.Schema.Types.ObjectId, ref: "sub" },
-    comments: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "Comment" }],
+    comments: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "comment" }],
+    votes: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "vote", }]
 }, {
     timestamps: true
 });

@@ -82,7 +82,7 @@ var getPosts = function (_, res) { return __awaiter(void 0, void 0, void 0, func
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);
-                return [4 /*yield*/, Post_1.default.find().populate("user", '-password').populate("sub")];
+                return [4 /*yield*/, Post_1.default.find().populate("user", '-password').populate("sub").populate("comments").populate('votes')];
             case 2:
                 posts = _a.sent();
                 return [2 /*return*/, res.json(posts)];
@@ -131,17 +131,22 @@ var commentOnPost = function (req, res) { return __awaiter(void 0, void 0, void 
                     return [2 /*return*/, res.status(404).json({ error: "Post not found" })];
                 _b.label = 2;
             case 2:
-                _b.trys.push([2, 4, , 5]);
+                _b.trys.push([2, 5, , 6]);
                 comment = new Comment_1.default({ identifier: (0, helpers_1.makeId)(8), user: user, body: body, posts: post._id });
-                return [4 /*yield*/, comment.save()];
+                // store comment in post
+                post.comments.push(comment._id);
+                return [4 /*yield*/, post.save()];
             case 3:
                 _b.sent();
-                return [2 /*return*/, res.json(comment)];
+                return [4 /*yield*/, comment.save()];
             case 4:
+                _b.sent();
+                return [2 /*return*/, res.json(comment)];
+            case 5:
                 error_3 = _b.sent();
                 console.log(error_3.message);
                 return [2 /*return*/, res.status(500).json({ error: error_3.message })];
-            case 5: return [2 /*return*/];
+            case 6: return [2 /*return*/];
         }
     });
 }); };
