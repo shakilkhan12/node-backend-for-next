@@ -47,6 +47,7 @@ exports.default = (function (req, res, next) { return __awaiter(void 0, void 0, 
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
+                console.log(req.cookies.token);
                 token = req.cookies.token;
                 if (!token)
                     return [2 /*return*/, res.status(401).json({ error: "No token" })];

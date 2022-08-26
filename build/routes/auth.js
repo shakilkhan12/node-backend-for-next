@@ -164,7 +164,7 @@ router.post('/login', userValidations_1.loginValidations, login);
 router.get('/me', auth_1.default, me);
 router.get('/check', auth_1.default, function (req, res) {
     var token = req.cookies.token;
-    return res.json({ auth: true, user: res.locals.user });
+    return res.json({ auth: true, user: res.locals.user, token: token });
 });
 router.get('/logout', auth_1.default, logout);
 exports.default = router;
