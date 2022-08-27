@@ -130,7 +130,7 @@ var login = function (req, res) { return __awaiter(void 0, void 0, void 0, funct
                     maxAge: 1000 * 60 * 60 * 24 * 7,
                     sameSite: "strict",
                     secure: process.env.NODE_ENV === "production",
-                    // path: "/",
+                    path: "/",
                     domain: process.env.NODE_ENV === 'production' ? 'https://reddditclone.vercel.app/' : '/',
                 }));
                 res.json({ user: user, token: token });
